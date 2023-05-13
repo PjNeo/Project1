@@ -17,6 +17,9 @@ class SeqRNA extends FastaRepresentation implements Calculateable {
      */
     @Override
     public double meltingPointCal() {
+        if(this.getLength()< 14){
+            var = (this.getaCount()+this.gettCount())*2
+        }
         return 0.0;
     }
     /**

@@ -100,57 +100,7 @@ public class FastaAdministration {
                 object.setLength(object.getSeq().length());
             }
 
-            for (FastaRepresentation object : adminlist) {
-                String seq = object.getSeq();
-                char g = 'G';
-                char c = 'C';
-                char t = 'T';
-                char a = 'A';
-                char u = 'U';
-                int counterG = 0;
-                int counterC = 0;
-                int counterT = 0;
-                int counterA = 0;
-                int counterU = 0;
-
-                for (int i = 0; i < seq.length(); i++) {
-                    if (g == seq.charAt(i)) {
-                        counterG++;
-                    }
-                }
-                object.setgCount(counterG);
-
-                for (int i = 0; i < seq.length(); i++) {
-                    if (c == seq.charAt(i)) {
-                        counterC++;
-                    }
-                }
-                object.setcCount(counterC);
-
-                for (int i = 0; i < seq.length(); i++) {
-                    if (t == seq.charAt(i)) {
-                        counterT++;
-                    }
-                }
-                object.settCount(counterT);
-
-                for (int i = 0; i < seq.length(); i++) {
-                    if (a == seq.charAt(i)) {
-                        counterA++;
-                    }
-                }
-                object.setaCount(counterA);
-
-                for (int i = 0; i < seq.length(); i++) {
-                    if (u == seq.charAt(i)) {
-                        counterU++;
-                    }
-                }
-                object.setuCount(counterU);
-
-
-            }
-
+            count();
 
 
             scanner.close();
@@ -161,6 +111,59 @@ public class FastaAdministration {
         }
 
         return "";
+    }
+
+    private void count() {
+        for (FastaRepresentation object : adminlist) {
+            String seq = object.getSeq();
+            char g = 'G';
+            char c = 'C';
+            char t = 'T';
+            char a = 'A';
+            char u = 'U';
+            int counterG = 0;
+            int counterC = 0;
+            int counterT = 0;
+            int counterA = 0;
+            int counterU = 0;
+
+            for (int i = 0; i < seq.length(); i++) {
+                if (g == seq.charAt(i)) {
+                    counterG++;
+                }
+            }
+            object.setgCount(counterG);
+
+            for (int i = 0; i < seq.length(); i++) {
+                if (c == seq.charAt(i)) {
+                    counterC++;
+                }
+            }
+            object.setcCount(counterC);
+
+            for (int i = 0; i < seq.length(); i++) {
+                if (t == seq.charAt(i)) {
+                    counterT++;
+                }
+            }
+            object.settCount(counterT);
+
+            for (int i = 0; i < seq.length(); i++) {
+                if (a == seq.charAt(i)) {
+                    counterA++;
+                }
+            }
+            object.setaCount(counterA);
+
+            for (int i = 0; i < seq.length(); i++) {
+                if (u == seq.charAt(i)) {
+                    counterU++;
+                }
+            }
+            object.setuCount(counterU);
+
+
+        }
     }
 
 
