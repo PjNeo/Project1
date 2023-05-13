@@ -11,25 +11,42 @@ package OOPIS;
  * geschrieben um Fehler im Code zu vermeiden.
  */
 class SeqDNA extends FastaRepresentation implements Calculateable {
+
     /**
      * Methode zur Schmelzpunkbestimmung
+     * @return double
      */
     @Override
-    public void meltingPointCal() {
-
+    public double meltingPointCal() {
+        return 0.0;
     }
+
     /**
      * Methode zur Molekulargewichtsbestimmung
+     *
+     * @return
      */
     @Override
-    public void molecularWeight() {
+    public double molecularWeight() {
+
+        double var =this.getaCount()*313.21 +this.getcCount()*289.18
+                    +this.getgCount()*329.21 +this.gettCount()*304.20
+                    -61.96;
+        return var;
 
     }
     /**
      * Methode zur GCanteilsbestimmung
+     *
+     * @return
      */
     @Override
-    public void gcContent() {
+    public double gcContent() {
+        double var = (double)
+                (this.getgCount()+this.getcCount())
+                /(this.getaCount()+this.getgCount()+this.getcCount()
+                + this.gettCount()+this.getuCount());
+        return var;
 
     }
     /**

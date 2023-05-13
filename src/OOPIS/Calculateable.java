@@ -13,19 +13,22 @@ package OOPIS;
 *fasta mit ausgegeben werden.
  */
 public interface Calculateable {
-
     /**
      * Methode zur Schmelzpunkbestimmung
      */
-    public void meltingPointCal();
+    public double meltingPointCal();
     /**
      * Methode zur molekulargewichtsbestimmung
+     *
+     * @return
      */
-    public void  molecularWeight();
+    public double molecularWeight();
     /**
      * Methode zur GCanteilsbestimmung
+     *
+     * @return
      */
-    public void gcContent();
+    public double gcContent();
     /**
      * Methode zur Nettoladungsberechnuung
      */

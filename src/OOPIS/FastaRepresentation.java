@@ -22,9 +22,73 @@ abstract class FastaRepresentation implements Calculateable {
 
     private String seq;
 
+    private String type;
+
+    private Integer length;
+
+    private String seqComposition;
+
+    private int cCount;
+
+    public int getgCount() {
+        return gCount;
+    }
+
+    public void setgCount(int gCount) {
+        this.gCount = gCount;
+    }
+
+    private int gCount;
+
+    public int gettCount() {
+        return tCount;
+    }
+
+    public void settCount(int tCount) {
+        this.tCount = tCount;
+    }
+
+    private int tCount;
+
+    public int getaCount() {
+        return aCount;
+    }
+
+    public void setaCount(int aCount) {
+        this.aCount = aCount;
+    }
+
+    private int aCount;
+
+    public int getuCount() {
+        return uCount;
+    }
+
+    public void setuCount(int uCount) {
+        this.uCount = uCount;
+    }
+
+    private int uCount;
+
+
+
+
+
+    public int getcCount() {
+        return cCount;
+    }
+
+    public void setcCount(int cCount) {
+        this.cCount = cCount;
+    }
+
+
+
     public String getSeqID() {
         return seqID;
     }
+
+
 
     /**
      * Hier wird in der Settermethode der String für die segID modifiziert
@@ -68,10 +132,6 @@ abstract class FastaRepresentation implements Calculateable {
         this.seqComposition = seqComposition;
     }
 
-    private String type;
 
-    private Integer length;
-
-    private String seqComposition;
 
 }

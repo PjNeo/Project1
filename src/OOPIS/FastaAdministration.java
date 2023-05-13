@@ -29,8 +29,25 @@ public class FastaAdministration {
     /**
      * attribut adminlist mit dem Datentyp FastaRepresentation um alle erschaffenen Objekte zu speichern
      */
-    private ArrayList<FastaRepresentation> adminlist= new ArrayList<>();
-    
+    ArrayList<FastaRepresentation> adminlist = new ArrayList<>();
+
+    private static FastaAdministration instance;
+
+
+    /**In dieser Methode wird dafür gesorgt, dass nur eine einzige Instanz
+     * dieser Klasse erstellt werden kann.
+     * @return FastaAdministration
+     */
+    public static FastaAdministration getInstance(){
+        if (instance == null) {
+            instance = new FastaAdministration();
+        }
+        return instance;
+    }
+
+
+
+
 
 
 
@@ -40,23 +57,17 @@ public class FastaAdministration {
     private ArrayList<FastaRepresentation> getAdminlist() {
         return this.adminlist;
     }
-    private static FastaAdministration instance;
 
-
-
-    public static FastaAdministration getInstance(){
-        if (instance == null) {
-            instance = new FastaAdministration();
-        }
-        return instance;
-    }
 
     /**
-     * Hier sollen die Objekte erschaffen werden und die Informationen ausgelesen werden.
-     * Ausserdem in die jeweiligen Objekte gespeichert werden.
-     * @return String
-     * @param
+     * Hier werden die Objekte erschaffen und die Informationen ausgelesen.
      *
+     * Durch das try wird zunächst gewährleistet das es mindestens einen Versuch gibt
+     * diese Methode durchzuführen. Hierdurch werden einige Variablen initialisiert und Objekte erstellt,
+     * die notwendig sind, für eine Zusammenstellung eines Objektes mit allen Fasta Einträgen.
+     * Die while Schleife iteriert solange über die Fastadatei bis alle Zeilen ausgelesen sind.
+     *
+     * @return String
      */
     public String getInformation(String dateiname, String type) {
 
@@ -89,6 +100,58 @@ public class FastaAdministration {
                 object.setLength(object.getSeq().length());
             }
 
+            for (FastaRepresentation object : adminlist) {
+                String seq = object.getSeq();
+                char g = 'G';
+                char c = 'C';
+                char t = 'T';
+                char a = 'A';
+                char u = 'U';
+                int counterG = 0;
+                int counterC = 0;
+                int counterT = 0;
+                int counterA = 0;
+                int counterU = 0;
+
+                for (int i = 0; i < seq.length(); i++) {
+                    if (g == seq.charAt(i)) {
+                        counterG++;
+                    }
+                }
+                object.setgCount(counterG);
+
+                for (int i = 0; i < seq.length(); i++) {
+                    if (c == seq.charAt(i)) {
+                        counterC++;
+                    }
+                }
+                object.setcCount(counterC);
+
+                for (int i = 0; i < seq.length(); i++) {
+                    if (t == seq.charAt(i)) {
+                        counterT++;
+                    }
+                }
+                object.settCount(counterT);
+
+                for (int i = 0; i < seq.length(); i++) {
+                    if (a == seq.charAt(i)) {
+                        counterA++;
+                    }
+                }
+                object.setaCount(counterA);
+
+                for (int i = 0; i < seq.length(); i++) {
+                    if (u == seq.charAt(i)) {
+                        counterU++;
+                    }
+                }
+                object.setuCount(counterU);
+
+
+            }
+
+
 
             scanner.close();
         }
@@ -107,6 +170,10 @@ public class FastaAdministration {
      */
     public void rewriteFasta(){
 
+
+        for (FastaRepresentation object: this.adminlist){
+            object.meltingPointCal();
+        }
     }
     
 }

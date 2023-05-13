@@ -5,6 +5,10 @@ public class Main {
 
         System.out.println("Hello world!");
         FastaAdministration n = new FastaAdministration();
-        n.getInformation(args[0],args[1]);
+        n.getInformation("/Users/philipnewman/IdeaProjects/Project1/src/OOPIS/sample.fasta", "Dna");
+        System.out.println(n.adminlist.get(0).gcContent());
+        System.out.println(n.adminlist.get(0).molecularWeight());
+
+
     }
 }

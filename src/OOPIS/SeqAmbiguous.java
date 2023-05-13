@@ -18,22 +18,28 @@ class SeqAmbiguous extends FastaRepresentation implements Calculateable {
      * Methode zur Schmelzpunkbestimmung
      */
     @Override
-    public void meltingPointCal() {
-
+    public double meltingPointCal() {
+        return 0.0;
     }
     /**
      * Methode zur Molekulargewichtsbestimmung
+     *
+     * @return
      */
     @Override
-    public void molecularWeight() {
+    public double molecularWeight() {
 
+        return 0;
     }
     /**
      * Methode zur GCanteilsbestimmung
+     *
+     * @return
      */
     @Override
-    public void gcContent() {
+    public double gcContent() {
 
+        return 0;
     }
     /**
      * Methode zur Nettoladungsberechnuung
