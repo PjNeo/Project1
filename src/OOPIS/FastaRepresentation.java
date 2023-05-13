@@ -26,8 +26,14 @@ abstract class FastaRepresentation implements Calculateable {
         return seqID;
     }
 
+    /**
+     * Hier wird in der Settermethode der String für die segID modifiziert
+     * um das überflüssige ">" zu entfernen. Der modifizierte String wird dann
+     * in die seqID des Objektes geschrieben.
+     * @param seqID
+     */
     public void setSeqID(String seqID) {
-        this.seqID = seqID;
+        this.seqID = seqID.replace(">","");
     }
 
     public String getSeq() {

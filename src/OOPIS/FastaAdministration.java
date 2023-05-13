@@ -47,33 +47,42 @@ public class FastaAdministration {
      * Hier sollen die Objekte erschaffen werden und die Informationen ausgelesen werden.
      * Ausserdem in die jeweiligen Objekte gespeichert werden.
      * @return String
-     *
+     * @param
      *
      */
     public String getInformation(String dateiname, String type) {
 
 
         try {
-
+            int counter = -1;
+            String seqSammeln=null;
             Scanner scanner = new Scanner(new File(dateiname));
             SeqFactory factory = new SeqFactory();
 
             while(scanner.hasNext()) {
 
-                String r = scanner.nextLine();
+                String line = scanner.nextLine();
 
-                if ( r.startsWith(">")){
+                if ( line.startsWith(">")){
                     FastaRepresentation header = factory.genSequences(type);
-                    header.setSeqID(r);
+                    header.setSeqID(line);
                     adminlist.add(header);
-                } else {
-                    adminlist.lastIndexOf()
+                    seqSammeln="";
+                    counter++;
 
+                } else {
+
+                    seqSammeln += line;
+                    adminlist.get(counter).setSeq(seqSammeln);
 
                 }
             }
+            for (FastaRepresentation object : adminlist){
+                object.setLength(object.getSeq().length());
+            }
 
-            scanner.close();                    // (3)
+
+            scanner.close();
         }
 
         catch(Exception e) {
