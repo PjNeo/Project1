@@ -40,8 +40,16 @@ public class FastaAdministration {
     private ArrayList<FastaRepresentation> getAdminlist() {
         return this.adminlist;
     }
+    private static FastaAdministration instance;
 
 
+
+    public static FastaAdministration getInstance(){
+        if (instance == null) {
+            instance = new FastaAdministration();
+        }
+        return instance;
+    }
 
     /**
      * Hier sollen die Objekte erschaffen werden und die Informationen ausgelesen werden.
