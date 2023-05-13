@@ -17,16 +17,7 @@ class SeqRNA extends FastaRepresentation implements Calculateable {
      */
     @Override
     public double meltingPointCal() {
-        double var;
-        if(this.getLength()< 14){
-            var =
-                    (this.getaCount()+this.gettCount())*2+
-                    (this.getgCount()+this.getcCount())*4;
-        }else{
-            var =  64.9+((41 * (this.getgCount() + this.getcCount() - 16.4))
-                            /(this.getaCount() + this.gettCount()+this.getgCount()+this.getcCount()));
-        }
-        return var;
+        return 0.0;
     }
     /**
      * Methode zur Molekulargewichtsbestimmung
