@@ -10,7 +10,7 @@ package OOPIS;
 /**
 *Interface Calculateable, welches alle Methoden bereit stellt, die die Subclassen für
 *die verschiedenen  Berechnungen benötigt. Die Ergebnisse sollen dann in einer neu erstellten
-*fasta mit ausgegeben werden.
+*fasta mit ausgegeben werden..
  */
 public interface Calculateable {
 
