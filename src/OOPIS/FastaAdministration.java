@@ -5,7 +5,9 @@
 package OOPIS;
 
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
 * Hier werden Objekte erstellt und mit den ausgelesenen Daten befüllt und abschließend abgespeichert.
@@ -27,7 +29,7 @@ public class FastaAdministration {
     /**
      * attribut adminlist mit dem Datentyp FastaRepresentation um alle erschaffenen Objekte zu speichern
      */
-    private ArrayList<FastaRepresentation> adminlist;
+    private ArrayList<FastaRepresentation> adminlist= new ArrayList<>();
     
 
 
@@ -45,9 +47,38 @@ public class FastaAdministration {
      * Hier sollen die Objekte erschaffen werden und die Informationen ausgelesen werden.
      * Ausserdem in die jeweiligen Objekte gespeichert werden.
      * @return String
+     *
+     *
      */
-    public String getInformation() {
-        //TODO
+    public String getInformation(String dateiname, String type) {
+
+
+        try {
+
+            Scanner scanner = new Scanner(new File(dateiname));
+            SeqFactory factory = new SeqFactory();
+
+            while(scanner.hasNext()) {
+
+                String r = scanner.nextLine();
+
+                if ( r.startsWith(">")){
+                    FastaRepresentation header = factory.genSequences(type);
+                    header.setSeqID(r);
+                    adminlist.add(header);
+                } else {
+                    adminlist.lastIndexOf()
+
+
+                }
+            }
+
+            scanner.close();                    // (3)
+        }
+
+        catch(Exception e) {
+            return "e";
+        }
 
         return "";
     }
