@@ -33,7 +33,7 @@ class SeqDNA extends FastaRepresentation implements Calculateable {
     /**
      * Methode zur Molekulargewichtsbestimmung
      *
-     * @return
+     * @return double
      */
     @Override
     public double molecularWeight() {
@@ -47,7 +47,7 @@ class SeqDNA extends FastaRepresentation implements Calculateable {
     /**
      * Methode zur GCanteilsbestimmung
      *
-     * @return
+     * @return double
      */
     @Override
     public double gcContent() {
@@ -55,7 +55,7 @@ class SeqDNA extends FastaRepresentation implements Calculateable {
                 (this.getgCount()+this.getcCount())
                 /(this.getaCount()+this.getgCount()+this.getcCount()
                 + this.gettCount()+this.getuCount());
-        return var;
+        return var*100;
 
     }
     /**
