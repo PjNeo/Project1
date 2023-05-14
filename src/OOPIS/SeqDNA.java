@@ -41,8 +41,8 @@ class SeqDNA extends FastaRepresentation implements Calculateable {
         double var =this.getaCount()*313.21 +this.getcCount()*289.18
                     +this.getgCount()*329.21 +this.gettCount()*304.20
                     -61.96;
-        return var;
 
+        return var;
     }
     /**
      * Methode zur GCanteilsbestimmung
@@ -51,13 +51,14 @@ class SeqDNA extends FastaRepresentation implements Calculateable {
      */
     @Override
     public double gcContent() {
+
         double var = (double)
                 (this.getgCount()+this.getcCount())
                 /(this.getaCount()+this.getgCount()+this.getcCount()
                 + this.gettCount()+this.getuCount());
         return var*100;
-
     }
+
     /**
      * Methode zur Nettoladungsberechnuung
      */

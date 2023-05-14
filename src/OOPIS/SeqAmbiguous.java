@@ -19,7 +19,16 @@ class SeqAmbiguous extends FastaRepresentation implements Calculateable {
      */
     @Override
     public double meltingPointCal() {
-        return 0.0;
+        double var;
+        if(this.getLength()< 14){
+            var =
+                    (this.getaCount()+this.gettCount())*2+
+                            (this.getgCount()+this.getcCount())*4;
+        }else{
+            var =  64.9+((41 * (this.getgCount() + this.getcCount() - 16.4))
+                    /(this.getaCount() + this.gettCount()+this.getgCount()+this.getcCount()));
+        }
+        return var;
     }
     /**
      * Methode zur Molekulargewichtsbestimmung
@@ -29,7 +38,10 @@ class SeqAmbiguous extends FastaRepresentation implements Calculateable {
     @Override
     public double molecularWeight() {
 
-        return 0;
+        double var =this.getaCount()*313.21 +this.getcCount()*289.18
+                +this.getgCount()*329.21 +this.gettCount()*304.20
+                -61.96;
+        return var;
     }
     /**
      * Methode zur GCanteilsbestimmung
@@ -39,7 +51,11 @@ class SeqAmbiguous extends FastaRepresentation implements Calculateable {
     @Override
     public double gcContent() {
 
-        return 0;
+        double var = (double)
+                (this.getgCount()+this.getcCount())
+                /(this.getaCount()+this.getgCount()+this.getcCount()
+                + this.gettCount()+this.getuCount());
+        return var;
     }
     /**
      * Methode zur Nettoladungsberechnuung

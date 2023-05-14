@@ -45,19 +45,12 @@ public class FastaAdministration {
         return instance;
     }
 
-
-
-
-
-
-
     /**
      * Getter Methode um die adminlist anzeigen zulassen.
      */
     private ArrayList<FastaRepresentation> getAdminlist() {
         return this.adminlist;
     }
-
 
     /**
      * Hier werden die Objekte erschaffen und die Informationen ausgelesen.
@@ -70,7 +63,6 @@ public class FastaAdministration {
      * @return String
      */
     public String getInformation(String dateiname, String type) {
-
 
         try {
             int counter = -1;
@@ -101,7 +93,6 @@ public class FastaAdministration {
             }
 
             count();
-
 
             scanner.close();
         }
@@ -166,13 +157,11 @@ public class FastaAdministration {
         }
     }
 
-
     /**
      * Hier sollen dann später die berechneten Daten in eine fasta Datei geschrieben werden.
      *
      */
     public void rewriteFasta(){
-
 
         for (FastaRepresentation object: this.adminlist){
             object.meltingPointCal();
