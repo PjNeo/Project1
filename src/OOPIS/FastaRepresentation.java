@@ -6,7 +6,8 @@
 package OOPIS;
 
 
-
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Die Repräsenetationsklasse die alle nötigen Attribute aufweist, sodass ein Object erschaffen werden kann,
@@ -28,58 +29,29 @@ abstract class FastaRepresentation implements Calculateable {
 
     private String seqComposition;
 
-    private int cCount;
-
-    private int gCount;
-
-    private int tCount;
-
-    private int aCount;
-
-    private int uCount;
+    private Map<Character, Integer> sCounts = new HashMap<>();
 
 
 
-    public int getaCount() {
-        return aCount;
+
+    public Map<Character, Integer> getsCounts() {
+        return sCounts;
     }
 
-    public void setaCount(int aCount) {
-        this.aCount = aCount;
+    public void setsCounts(Map<Character, Integer> sCounts) {
+        this.sCounts = sCounts;
     }
 
-    public int gettCount() {
-        return tCount;
+    public void fillsCounts() {
+
+        for (int i = 0; i < this.getSeq().length(); i++) {
+            if (this.getsCounts().containsKey(this.getSeq().charAt(i))) {
+                this.getsCounts().put(this.getSeq().charAt(i), this.getsCounts().get(this.getSeq().charAt(i)) + 1);
+            } else {
+                this.getsCounts().put(this.getSeq().charAt(i), 1);
+            }
+        }
     }
-
-    public void settCount(int tCount) {
-        this.tCount = tCount;
-    }
-
-    public int getuCount() {
-        return uCount;
-    }
-
-    public void setuCount(int uCount) {
-        this.uCount = uCount;
-    }
-
-    public int getcCount() {
-        return cCount;
-    }
-
-    public void setcCount(int cCount) {
-        this.cCount = cCount;
-    }
-
-
-
-    public String getSeqID() {
-        return seqID;
-    }
-
-
-
     /**
      * Hier wird in der Settermethode der String für die segID modifiziert
      * um das überflüssige ">" zu entfernen. Der modifizierte String wird dann
@@ -92,6 +64,10 @@ abstract class FastaRepresentation implements Calculateable {
 
     public String getSeq() {
         return seq;
+    }
+
+    public String getSeqID() {
+        return seqID;
     }
 
     public void setSeq(String seq) {

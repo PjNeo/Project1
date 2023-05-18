@@ -46,13 +46,6 @@ public class FastaAdministration {
     }
 
     /**
-     * Getter Methode um die adminlist anzeigen zulassen.
-     */
-    private ArrayList<FastaRepresentation> getAdminlist() {
-        return this.adminlist;
-    }
-
-    /**
      * Hier werden die Objekte erschaffen und die Informationen ausgelesen.
      *
      * Durch das try wird zunächst gewährleistet das es mindestens einen Versuch gibt
@@ -74,13 +67,13 @@ public class FastaAdministration {
 
                 String line = scanner.nextLine();
 
-                if ( line.startsWith(">")){
+                if ( line.startsWith(">")) {
                     FastaRepresentation header = factory.genSequences(type);
                     header.setSeqID(line);
                     adminlist.add(header);
-                    seqSammeln="";
+                    seqSammeln = "";
                     counter++;
-
+                }else if(line.startsWith(";")) {
                 } else {
 
                     seqSammeln += line;
@@ -90,9 +83,10 @@ public class FastaAdministration {
             }
             for (FastaRepresentation object : adminlist){
                 object.setLength(object.getSeq().length());
+                object.fillsCounts();
             }
 
-            count();
+
 
             scanner.close();
         }
@@ -104,58 +98,7 @@ public class FastaAdministration {
         return "";
     }
 
-    private void count() {
-        for (FastaRepresentation object : adminlist) {
-            String seq = object.getSeq();
-            char g = 'G';
-            char c = 'C';
-            char t = 'T';
-            char a = 'A';
-            char u = 'U';
-            int counterG = 0;
-            int counterC = 0;
-            int counterT = 0;
-            int counterA = 0;
-            int counterU = 0;
 
-            for (int i = 0; i < seq.length(); i++) {
-                if (g == seq.charAt(i)) {
-                    counterG++;
-                }
-            }
-            object.setgCount(counterG);
-
-            for (int i = 0; i < seq.length(); i++) {
-                if (c == seq.charAt(i)) {
-                    counterC++;
-                }
-            }
-            object.setcCount(counterC);
-
-            for (int i = 0; i < seq.length(); i++) {
-                if (t == seq.charAt(i)) {
-                    counterT++;
-                }
-            }
-            object.settCount(counterT);
-
-            for (int i = 0; i < seq.length(); i++) {
-                if (a == seq.charAt(i)) {
-                    counterA++;
-                }
-            }
-            object.setaCount(counterA);
-
-            for (int i = 0; i < seq.length(); i++) {
-                if (u == seq.charAt(i)) {
-                    counterU++;
-                }
-            }
-            object.setuCount(counterU);
-
-
-        }
-    }
 
     /**
      * Hier sollen dann später die berechneten Daten in eine fasta Datei geschrieben werden.

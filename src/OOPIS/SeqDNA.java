@@ -21,11 +21,11 @@ class SeqDNA extends FastaRepresentation implements Calculateable {
         double var;
         if(this.getLength()< 14){
             var =
-                    (this.getaCount()+this.gettCount())*2+
-                            (this.getgCount()+this.getcCount())*4;
+                    (this.getsCounts().get("A")+this.getsCounts().get("T")*2+
+                            (this.getsCounts().get("G")+this.getsCounts().get("C"))*4);
         }else{
-            var =  64.9+((41 * (this.getgCount() + this.getcCount() - 16.4))
-                    /(this.getaCount() + this.gettCount()+this.getgCount()+this.getcCount()));
+            var =  64.9+((41 * (this.getsCounts().get("G")+ this.getsCounts().get("C") - 16.4))
+                    /(this.getsCounts().get("A") + this.getsCounts().get("T")+this.getsCounts().get("G")+this.getsCounts().get("C")));
         }
         return var;
     }
@@ -38,8 +38,8 @@ class SeqDNA extends FastaRepresentation implements Calculateable {
     @Override
     public double molecularWeight() {
 
-        double var =this.getaCount()*313.21 +this.getcCount()*289.18
-                    +this.getgCount()*329.21 +this.gettCount()*304.20
+        double var =this.getsCounts().get("A")*313.21 +this.getsCounts().get("C")*289.18
+                    +this.getsCounts().get("G")*329.21 +this.getsCounts().get("T")*304.20
                     -61.96;
 
         return var;
@@ -53,9 +53,9 @@ class SeqDNA extends FastaRepresentation implements Calculateable {
     public double gcContent() {
 
         double var = (double)
-                (this.getgCount()+this.getcCount())
-                /(this.getaCount()+this.getgCount()+this.getcCount()
-                + this.gettCount()+this.getuCount());
+                (this.getgCount()+this.getsCounts().get("C"))
+                /(this.getsCounts().get("A")+this.getsCounts().get("G")+this.getsCounts().get("C")
+                + this.getsCounts().get("T")+this.getsCounts().get("U"));
         return var*100;
     }
 
@@ -64,13 +64,13 @@ class SeqDNA extends FastaRepresentation implements Calculateable {
      */
     @Override
     public void netCharge() {
-
+        System.out.println("Kann auf diese Sequenz nicht angewendet werden");
     }
     /**
      * Methode zur Umwandlung in Amino
      */
     @Override
     public void transferToAmino() {
-
+        //TODO
     }
 }
