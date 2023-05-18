@@ -13,27 +13,19 @@ package OOPIS;
  * Die Rückgaben der Methoden wurden zunächst ohne Rückgabetypen
  * geschrieben.+
 */
-class SeqAmbiguous extends FastaRepresentation implements Calculateable {
+class SeqAmbiguous extends FastaRepresentation  {
     /**
      * Methode zur Schmelzpunkbestimmung
      */
     @Override
     public double meltingPointCal() {
-        double var;
-        if(this.getLength()< 14){
-            var =
-                    (this.getaCount()+this.gettCount())*2+
-                            (this.getgCount()+this.getcCount())*4;
-        }else{
-            var =  64.9+((41 * (this.getgCount() + this.getcCount() - 16.4))
-                    /(this.getaCount() + this.gettCount()+this.getgCount()+this.getcCount()));
-        }
-        return var;
+
+
     }
     /**
      * Methode zur Molekulargewichtsbestimmung
      *
-     * @return
+     * @return double
      */
     @Override
     public double molecularWeight() {
@@ -46,23 +38,26 @@ class SeqAmbiguous extends FastaRepresentation implements Calculateable {
     /**
      * Methode zur GCanteilsbestimmung
      *
-     * @return
+     * @return double
      */
     @Override
     public double gcContent() {
 
         double var = (double)
-                (this.getgCount()+this.getcCount())
-                /(this.getaCount()+this.getgCount()+this.getcCount()
-                + this.gettCount()+this.getuCount());
-        return var;
+                (this.getsCounts().get('G')+this.getsCounts().get('C'))
+                /(this.getsCounts().get('A')+this.getsCounts().get('G')+this.getsCounts().get('C')
+                + this.getsCounts().get('T'));
+        return var*100;
     }
     /**
      * Methode zur Nettoladungsberechnuung
+     *
+     * @return double
      */
     @Override
-    public void netCharge() {
-
+    public double netCharge() {
+        System.out.println("Kann nicht auf diese Sequenz angewendet werden");
+        return 0.0;
     }
     /**
      * Methode zur Umwandlung in Amino

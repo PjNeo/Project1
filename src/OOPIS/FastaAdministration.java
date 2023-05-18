@@ -8,6 +8,7 @@ package OOPIS;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Map;
 
 /**
 * Hier werden Objekte erstellt und mit den ausgelesenen Daten befüllt und abschließend abgespeichert.
@@ -55,6 +56,7 @@ public class FastaAdministration {
      *
      * @return String
      */
+
     public String getInformation(String dateiname, String type) {
 
         try {
@@ -84,6 +86,16 @@ public class FastaAdministration {
             for (FastaRepresentation object : adminlist){
                 object.setLength(object.getSeq().length());
                 object.fillsCounts();
+
+                object.getPeptideMap().put("C", 8.33);
+                object.getPeptideMap().put("D", 3.86);
+                object.getPeptideMap().put("E", 4.25);
+                object.getPeptideMap().put("H", 6.0);
+                object.getPeptideMap().put("K", 10.53);
+                object.getPeptideMap().put("R", 12.48);
+                object.getPeptideMap().put("Y", 10.07);
+                object.getPeptideMap().put("N-Term", 9.69);
+                object.getPeptideMap().put("C-Term", 2.34);
             }
 
 

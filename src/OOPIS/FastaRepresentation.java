@@ -31,17 +31,22 @@ abstract class FastaRepresentation implements Calculateable {
 
     private Map<Character, Integer> sCounts = new HashMap<>();
 
+    private Map<String,Double> peptideMap = new HashMap<>();
 
 
 
+    public Map<String, Double> getPeptideMap() {
+        return peptideMap;
+    }
     public Map<Character, Integer> getsCounts() {
         return sCounts;
     }
 
-    public void setsCounts(Map<Character, Integer> sCounts) {
-        this.sCounts = sCounts;
-    }
 
+    /**
+     * Die Methode die die Hashmap mit Einträgen befüllt mit dem Alphabet der Sequenz
+     * und wie oft der einzelne Charakter vorkommt.
+     */
     public void fillsCounts() {
 
         for (int i = 0; i < this.getSeq().length(); i++) {
@@ -52,6 +57,7 @@ abstract class FastaRepresentation implements Calculateable {
             }
         }
     }
+
     /**
      * Hier wird in der Settermethode der String für die segID modifiziert
      * um das überflüssige ">" zu entfernen. Der modifizierte String wird dann
@@ -62,50 +68,55 @@ abstract class FastaRepresentation implements Calculateable {
         this.seqID = seqID.replace(">","");
     }
 
+    /**
+     * Getter Methode für die Sequenz des Objekts.
+     * @return String
+     */
     public String getSeq() {
         return seq;
     }
-
+    /**
+     * Getter Methode für die Sequenz ID des Objekts.
+     * @return String
+     */
     public String getSeqID() {
         return seqID;
     }
-
+    /**
+     * Setter Methode für die Sequenz des Objekts.
+     */
     public void setSeq(String seq) {
         this.seq = seq;
     }
-
-    public int getgCount() {
-        return gCount;
-    }
-
-    public void setgCount(int gCount) {
-        this.gCount = gCount;
-    }
-
+    /**
+     * Getter Methode für die Sequenztypen des Objekts.
+     * @return String
+     */
     public String getType() {
         return type;
     }
-
+    /**
+     * Getter Methode für die Sequenz des Objekts.
+     */
     public void setType(String type) {
         this.type = type;
     }
-
+    /**
+     * Getter Methode für die Sequenzlänge des Objekts.
+     * @return Integer
+     */
     public Integer getLength() {
         return length;
     }
-
-    public void setLength(Integer length) {
-        this.length = length;
-    }
-
+    /**
+     * Getter Methode für die Sequenzzusammensetzung des Objekts
+     * @return String
+     */
     public String getSeqComposition() {
         return seqComposition;
     }
 
-    public void setSeqComposition(String seqComposition) {
-        this.seqComposition = seqComposition;
+    public void setLength(int length) {
+        this.length=length;
     }
-
-
-
 }

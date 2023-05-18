@@ -11,12 +11,14 @@ package OOPIS;
  * Die Rückgaben der Methoden wurden zunächst ohne Rückgabetypen
  * geschrieben.
  */
-class SeqRNA extends FastaRepresentation implements Calculateable {
+class SeqRNA extends FastaRepresentation {
     /**
      * Methode zur Schmelzpunkbestimmung
+     * @return double
      */
     @Override
     public double meltingPointCal() {
+        System.out.println("Kann nicht auf diese Sequenz angewendet werden");
         return 0.0;
     }
     /**
@@ -26,8 +28,8 @@ class SeqRNA extends FastaRepresentation implements Calculateable {
      */
     @Override
     public double molecularWeight() {
-        double var =this.getaCount()*329.21 +this.getcCount()*305.2
-                +this.getgCount()*345.2 +this.gettCount()*306.2
+        double var =this.getsCounts().get('A')*329.21 +this.getsCounts().get('C')*305.2
+                +this.getsCounts().get('G')*345.2 +this.getsCounts().get('U')*306.2
                 +159;
         return var;
     }
@@ -39,10 +41,10 @@ class SeqRNA extends FastaRepresentation implements Calculateable {
     @Override
     public double gcContent() {
         double var = (double)
-                (this.getgCount()+this.getcCount())
-                /(this.getaCount()+this.getgCount()+this.getcCount()
-                + this.gettCount()+this.getuCount());
-        return var;
+                (this.getsCounts().get('G')+this.getsCounts().get('C'))
+                /(this.getsCounts().get('A')+this.getsCounts().get('G')+this.getsCounts().get('C')
+                + this.getsCounts().get('U'));
+        return var*100;
     }
     /**
      * Methode zur Nettoladungsberechnuung
@@ -50,10 +52,8 @@ class SeqRNA extends FastaRepresentation implements Calculateable {
     @Override
     public void netCharge() {
 
+        System.out.println("Kann nicht auf diese Sequenz angewendet werden");
     }
-    /**
-     * Methode zur Umwandlung in Amino
-     */
     @Override
     public void transferToAmino() {
 
