@@ -14,10 +14,10 @@ package OOPIS;
  * erschaffen werden können. Welche Subklasse angesprochen wird wird in SeqFaktory durch if abfragen geregelt.
 */
 abstract class FastaRepresentation implements Calculateable {
-    
+
     /**
-    * Attribute die für die Spezifizierung eines fasta Eintrages wichtig sind.
-    */
+     * Attribute die für die Spezifizierung eines fasta Eintrages wichtig sind.
+     */
     private String seqID;
 
     private String seq;
@@ -30,25 +30,15 @@ abstract class FastaRepresentation implements Calculateable {
 
     private int cCount;
 
-    public int getgCount() {
-        return gCount;
-    }
-
-    public void setgCount(int gCount) {
-        this.gCount = gCount;
-    }
-
     private int gCount;
 
-    public int gettCount() {
-        return tCount;
-    }
-
-    public void settCount(int tCount) {
-        this.tCount = tCount;
-    }
-
     private int tCount;
+
+    private int aCount;
+
+    private int uCount;
+
+
 
     public int getaCount() {
         return aCount;
@@ -58,7 +48,13 @@ abstract class FastaRepresentation implements Calculateable {
         this.aCount = aCount;
     }
 
-    private int aCount;
+    public int gettCount() {
+        return tCount;
+    }
+
+    public void settCount(int tCount) {
+        this.tCount = tCount;
+    }
 
     public int getuCount() {
         return uCount;
@@ -67,12 +63,6 @@ abstract class FastaRepresentation implements Calculateable {
     public void setuCount(int uCount) {
         this.uCount = uCount;
     }
-
-    private int uCount;
-
-
-
-
 
     public int getcCount() {
         return cCount;
@@ -106,6 +96,14 @@ abstract class FastaRepresentation implements Calculateable {
 
     public void setSeq(String seq) {
         this.seq = seq;
+    }
+
+    public int getgCount() {
+        return gCount;
+    }
+
+    public void setgCount(int gCount) {
+        this.gCount = gCount;
     }
 
     public String getType() {
