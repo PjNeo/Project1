@@ -6,36 +6,42 @@
 package OOPIS;
 
 
-
 /**
-*Interface Calculateable, welches alle Methoden bereit stellt, die die Subclassen für
-*die verschiedenen  Berechnungen benötigt. Die Ergebnisse sollen dann in einer neu erstellten
-*fasta mit ausgegeben werden.
+ * Interface Calculateable, welches alle Methoden bereit stellt, die die Subclassen für
+ * die verschiedenen  Berechnungen benötigt. Die Ergebnisse sollen dann in einer neu erstellten
+ * fasta mit ausgegeben werden.
  */
 public interface Calculateable {
     /**
      * Methode zur Schmelzpunkbestimmung
      */
     public double meltingPointCal();
+
     /**
      * Methode zur molekulargewichtsbestimmung
      *
      * @return
      */
     public double molecularWeight();
+
     /**
      * Methode zur GCanteilsbestimmung
      *
      * @return
      */
     public double gcContent();
+
     /**
      * Methode zur Nettoladungsberechnuung
+     *
+     * @return
      */
-    public void netCharge();
+    public double netCharge(double pH);
+
     /**
      * Methode zur Umwandlung in Amino
      */
     public void transferToAmino();
+
 
 }

@@ -49,6 +49,9 @@ abstract class FastaRepresentation implements Calculateable {
      */
     public void fillsCounts() {
 
+        this.sCounts.put('+', 1);
+        this.sCounts.put('-', 1);
+
         for (int i = 0; i < this.getSeq().length(); i++) {
             if (this.getsCounts().containsKey(this.getSeq().charAt(i))) {
                 this.getsCounts().put(this.getSeq().charAt(i), this.getsCounts().get(this.getSeq().charAt(i)) + 1);
@@ -119,4 +122,6 @@ abstract class FastaRepresentation implements Calculateable {
     public void setLength(int length) {
         this.length=length;
     }
+
+
 }

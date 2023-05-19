@@ -39,8 +39,8 @@ class SeqDNA extends FastaRepresentation {
     public double molecularWeight() {
 
         double var =this.getsCounts().get('A')*313.21 +this.getsCounts().get('C')*289.18
-                    +this.getsCounts().get('G')*329.21 +this.getsCounts().get('T')*304.20
-                    -61.96;
+                +this.getsCounts().get('G')*329.21 +this.getsCounts().get('T')*304.20
+                -61.96;
 
         return var;
     }
@@ -61,10 +61,13 @@ class SeqDNA extends FastaRepresentation {
 
     /**
      * Methode zur Nettoladungsberechnuung
+     *
+     * @return
      */
     @Override
-    public void netCharge() {
+    public double netCharge(double pH) {
         System.out.println("Kann auf diese Sequenz nicht angewendet werden");
+        return 0;
     }
     /**
      * Methode zur Umwandlung in Amino

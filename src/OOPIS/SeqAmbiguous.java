@@ -20,7 +20,7 @@ class SeqAmbiguous extends FastaRepresentation  {
     @Override
     public double meltingPointCal() {
 
-
+        return 0.0;
     }
     /**
      * Methode zur Molekulargewichtsbestimmung
@@ -30,9 +30,10 @@ class SeqAmbiguous extends FastaRepresentation  {
     @Override
     public double molecularWeight() {
 
-        double var =this.getaCount()*313.21 +this.getcCount()*289.18
-                +this.getgCount()*329.21 +this.gettCount()*304.20
+        double var =this.getsCounts().get('A')*313.21 +this.getsCounts().get('C')*289.18
+                +this.getsCounts().get('G')*329.21 +this.getsCounts().get('T')*304.20
                 -61.96;
+
         return var;
     }
     /**
@@ -55,7 +56,7 @@ class SeqAmbiguous extends FastaRepresentation  {
      * @return double
      */
     @Override
-    public double netCharge() {
+    public double netCharge(double pH) {
         System.out.println("Kann nicht auf diese Sequenz angewendet werden");
         return 0.0;
     }

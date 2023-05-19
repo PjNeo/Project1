@@ -15,18 +15,17 @@ public class SeqFactory {
      * @return Object
      */
     public FastaRepresentation genSequences(String type) {
-        FastaRepresentation seq = null;
 
         if (type.equalsIgnoreCase("DNA")) {
-            seq = new SeqDNA();
+            return new SeqDNA();
         } else if (type.equalsIgnoreCase("RNA")) {
-            seq = new SeqRNA();
+            return new SeqRNA();
         } else if (type.equalsIgnoreCase("Ambiguous")) {
-            seq = new SeqAmbiguous();
+            return new SeqAmbiguous();
         } else if (type.equalsIgnoreCase("Peptide")) {
-            seq = new SeqPeptide();
-        }return seq;
+            return new SeqPeptide();
+        }
 
-
+        throw new IllegalArgumentException("Wrong sequence type - RNA,Ambiguous,Peptide are allowed");
     }
 }

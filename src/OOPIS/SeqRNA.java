@@ -42,17 +42,19 @@ class SeqRNA extends FastaRepresentation {
     public double gcContent() {
         double var = (double)
                 (this.getsCounts().get('G')+this.getsCounts().get('C'))
-                /(this.getsCounts().get('A')+this.getsCounts().get('G')+this.getsCounts().get('C')
-                + this.getsCounts().get('U'));
+                /(this.getLength());
         return var*100;
     }
     /**
      * Methode zur Nettoladungsberechnuung
+     *
+     * @return
      */
     @Override
-    public void netCharge() {
+    public double netCharge(double pH) {
 
         System.out.println("Kann nicht auf diese Sequenz angewendet werden");
+        return 0.0;
     }
     @Override
     public void transferToAmino() {
