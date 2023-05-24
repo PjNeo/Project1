@@ -12,6 +12,7 @@ package OOPIS;
  * geschrieben.
  */
 class SeqRNA extends FastaRepresentation {
+
     /**
      * Methode zur Schmelzpunkbestimmung
      * @return double
@@ -47,8 +48,8 @@ class SeqRNA extends FastaRepresentation {
     }
     /**
      * Methode zur Nettoladungsberechnuung
-     *
-     * @return
+     * @param pH
+     * @return double
      */
     @Override
     public double netCharge(double pH) {
@@ -56,6 +57,10 @@ class SeqRNA extends FastaRepresentation {
         System.out.println("Kann nicht auf diese Sequenz angewendet werden");
         return 0.0;
     }
+
+    /**
+     * Methode um die Sequenz in Amino umzuwandeln
+     */
     @Override
     public void transferToAmino() {
 

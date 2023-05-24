@@ -30,7 +30,8 @@ class SeqPeptide extends FastaRepresentation {
 
 
     /**
-     * Methode zur Schmelzpunkbestimmung
+     * Methode zur Schmelzpunktbestimmung für das Objekt auf das die Methode angewandt
+     * wird.
      *
      * @return double
      */
@@ -41,7 +42,8 @@ class SeqPeptide extends FastaRepresentation {
     }
 
     /**
-     * Methode zur Molekulargewichtsbestimmung
+     * Methode zur Molekulargewichtsbestimmung des Objects auf das die Methode
+     * ausgeführt wird.
      *
      * @return double
      */
@@ -75,7 +77,8 @@ class SeqPeptide extends FastaRepresentation {
     }
 
     /**
-     * Methode zur Nettoladungsberechnuung
+     * Methode zur Berechnung der Nettoladung des Objekts auf das die Methode angewandt
+     * wird.
      *
      * @param pH
      * @return double
@@ -123,33 +126,17 @@ class SeqPeptide extends FastaRepresentation {
 //                    }
                 });
 
-//        double sum1 = 1 * (
-//                Math.pow(10, this.getPeptideMap().get("N-Term"))
-//                        / (Math.pow(10, 7) + Math.pow(10, this.getPeptideMap().get("N-Term"))))
-//                + (this.getsCounts().get('R') * Math.pow(10, this.getPeptideMap().get("R"))
-//                / (Math.pow(10, 7) + Math.pow(10, this.getPeptideMap().get("R"))))
-//                + (this.getsCounts().get('K') * Math.pow(10, this.getPeptideMap().get("K"))
-//                / (Math.pow(10, 7) + Math.pow(10, this.getPeptideMap().get("K"))))
-//                + (this.getsCounts().get('H') * Math.pow(10, this.getPeptideMap().get("H"))
-//                / (Math.pow(10, 7) + Math.pow(10, this.getPeptideMap().get("H"))));
-//
-//        double sum2 = (1 * Math.pow(10, this.getPeptideMap().get("C-Term"))
-//                / (Math.pow(10, 7) + Math.pow(10, this.getPeptideMap().get("C-Term"))))
-//                + (this.getsCounts().get('D') * Math.pow(10, this.getPeptideMap().get("D"))
-//                / (Math.pow(10, 7) + Math.pow(10, this.getPeptideMap().get("D"))))
-//                + (this.getsCounts().get('E') * Math.pow(10, this.getPeptideMap().get("E"))
-//                / (Math.pow(10, 7) + Math.pow(10, this.getPeptideMap().get("E"))))
-//                + (this.getsCounts().get('C') * Math.pow(10, this.getPeptideMap().get("C"))
-//                / (Math.pow(10, 7) + Math.pow(10, this.getPeptideMap().get("C"))))
-//                + (this.getsCounts().get('Y') * Math.pow(10, this.getPeptideMap().get("Y"))
-//                / (Math.pow(10, 7) + Math.pow(10, this.getPeptideMap().get("Y"))));
-//
-//
-//        double result = sum1 - sum2;
 
         return sumNTerminus.get() - sumCTerminus.get();
     }
 
+    /**
+     * Eine rekursive Methode zur Berechnung des Isoelektrischen Punktes Objektes
+     * auf das diese Methode angewandt wird.
+     *
+     * @param pH
+     * @return pI
+     */
     public double pI(final double pH) {
         if (isApproximatelyZero(this.netCharge(pH))) {
             return pH;
@@ -161,7 +148,11 @@ class SeqPeptide extends FastaRepresentation {
             return pI(pH + pH / 2);
         }
     }
-
+    /**
+     *
+     * @param value
+     * @return Math.abs
+     */
     public boolean isApproximatelyZero(double value) {
         return Math.abs(value) <= 0.01;
     }
