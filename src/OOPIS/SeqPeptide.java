@@ -77,8 +77,8 @@ class SeqPeptide extends FastaRepresentation {
     }
 
     /**
-     * Methode zur Berechnung der Nettoladung des Objekts auf das die Methode angewandt
-     * wird.
+     * Methode zur Berechnung der Nettoladung des Objekts.
+     * Diese Methode wird aufgerufen wenn der Isoelektrische Punkt pI ermittelt wird.
      *
      * @param pH
      * @return double
@@ -149,7 +149,7 @@ class SeqPeptide extends FastaRepresentation {
         }
     }
     /**
-     *
+     *Hier wird sichergestellt, dass der Wert sich nur um den pH Wert von 0 bewegt in einem Abstand von 0.01
      * @param value
      * @return Math.abs
      */

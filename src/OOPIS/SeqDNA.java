@@ -62,7 +62,7 @@ class SeqDNA extends FastaRepresentation {
     /**
      * Methode zur Nettoladungsberechnuung
      *
-     * @return
+     * @return double
      */
     @Override
     public double netCharge(double pH) {

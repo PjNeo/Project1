@@ -57,12 +57,13 @@ public class FastaAdministration {
      * diese Methode durchzuführen. Hierdurch werden einige Variablen initialisiert und Objekte erstellt,
      * die notwendig sind, für eine Zusammenstellung eines Objektes mit allen Fasta Einträgen.
      * Die while Schleife iteriert solange über die Fastadatei bis alle Zeilen ausgelesen sind.
+     * @param dateiname
+     * @param type
      *
-     * @return String
      */
 
     public void getInformation(String dateiname, String type) {
-
+        SeqTypeEn typCheck = SeqTypeEn.valueOf(type);
         try {
             int counter = -1;
             String seqSammeln = null;
@@ -74,7 +75,7 @@ public class FastaAdministration {
                 String line = scanner.nextLine();
 
                 if (line.startsWith(">")) {
-                    FastaRepresentation header = factory.genSequences(type);
+                    FastaRepresentation header = factory.genSequences(typCheck);
                     header.setSeqID(line);
                     header.setType(type);
                     adminlist.add(header);
@@ -116,9 +117,9 @@ public class FastaAdministration {
      */
     public void rewriteFasta() {
 
-        for (FastaRepresentation object : this.adminlist) {
-            object.meltingPointCal();
+//        for (FastaRepresentation object : this.adminlist) {
+//            object.meltingPointCal();
         }
     }
 
-}
+

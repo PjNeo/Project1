@@ -15,6 +15,7 @@ class SeqRNA extends FastaRepresentation {
 
     /**
      * Methode zur Schmelzpunkbestimmung
+     *
      * @return double
      */
     @Override

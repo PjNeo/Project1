@@ -16,6 +16,7 @@ package OOPIS;
 class SeqAmbiguous extends FastaRepresentation  {
     /**
      * Methode zur Schmelzpunkbestimmung
+     * @return double
      */
     @Override
     public double meltingPointCal() {
@@ -52,7 +53,7 @@ class SeqAmbiguous extends FastaRepresentation  {
     }
     /**
      * Methode zur Nettoladungsberechnuung
-     *
+     * @param pH
      * @return double
      */
     @Override

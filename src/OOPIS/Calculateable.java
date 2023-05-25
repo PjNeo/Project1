@@ -14,27 +14,28 @@ package OOPIS;
 public interface Calculateable {
     /**
      * Methode zur Schmelzpunkbestimmung
+     * @return double
      */
     public double meltingPointCal();
 
     /**
      * Methode zur molekulargewichtsbestimmung
      *
-     * @return
+     * @return double
      */
     public double molecularWeight();
 
     /**
      * Methode zur GCanteilsbestimmung
      *
-     * @return
+     * @return double
      */
     public double gcContent();
 
     /**
      * Methode zur Nettoladungsberechnuung
      *
-     * @return
+     * @return double
      */
     public double netCharge(double pH);
 
