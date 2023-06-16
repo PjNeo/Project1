@@ -59,10 +59,8 @@ class SeqPeptide extends FastaRepresentation {
                         + this.getsCounts().get('R') * this.getPeptideMap().get("R")
                         + this.getsCounts().get('Y') * this.getPeptideMap().get("Y");
 
-        double result = sum + this.getPeptideMap().get("C-Term") + this.getPeptideMap().get("N-Term");
 
-
-        return result;
+        return sum + this.getPeptideMap().get("C-Term") + this.getPeptideMap().get("N-Term");
     }
 
     /**
@@ -137,7 +135,8 @@ class SeqPeptide extends FastaRepresentation {
      * @param pH
      * @return pI
      */
-    public double pI(final double pH) {
+    @Override
+    public double pI( double pH) {
         if (isApproximatelyZero(this.netCharge(pH))) {
             return pH;
         }

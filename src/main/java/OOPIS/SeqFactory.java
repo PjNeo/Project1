@@ -19,10 +19,10 @@ public class SeqFactory {
      *
      */
     public FastaRepresentation genSequences(SeqTypeEn type) {
-        if (type.equals(SeqTypeEn.valueOf("DNA"))) {
 
             switch (type) {
                 case DNA -> {
+
                     return new SeqDNA();
                 }
                 case RNA -> {
@@ -39,6 +39,6 @@ public class SeqFactory {
                 }
             }
         }
-        return null;
+
     }
-}
+

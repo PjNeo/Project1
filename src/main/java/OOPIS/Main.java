@@ -4,10 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FastaCheckException {
 
-        SeqTypeEn sequenceType = SeqTypeEn.identifySequenceType(args[1]);
-        System.out.println(sequenceType);
+
         FastaAdministration sequences = new FastaAdministration();
         sequences.getInformation(args[0], args[1]);
 //        for (FastaRepresentation element: sequences.adminlist) {

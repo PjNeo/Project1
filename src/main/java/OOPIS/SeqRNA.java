@@ -30,7 +30,7 @@ class SeqRNA extends FastaRepresentation {
      */
     @Override
     public double molecularWeight() {
-        double var =this.getsCounts().get('A')*329.21 +this.getsCounts().get('C')*305.2
+        double var =this.getsCounts().get('A')*329.2 +this.getsCounts().get('C')*305.2
                 +this.getsCounts().get('G')*345.2 +this.getsCounts().get('U')*306.2
                 +159;
         return var;
@@ -65,5 +65,16 @@ class SeqRNA extends FastaRepresentation {
     @Override
     public void transferToAmino() {
 
+    }
+    /**
+     * Eine rekursive Methode zur Berechnung des Isoelektrischen Punktes Objektes
+     * auf das diese Methode angewandt wird.
+     *
+     * @param pH
+     * @return double
+     */
+    public double pI( double pH) {
+        System.out.println("Kann auf diese Sequenz nicht angewendet werden");
+        return 0.0;
     }
 }

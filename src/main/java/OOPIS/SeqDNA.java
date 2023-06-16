@@ -21,8 +21,8 @@ class SeqDNA extends FastaRepresentation {
         double var;
         if(this.getLength()< 14){
             var =
-                    (this.getsCounts().get('A')+this.getsCounts().get('T')*2+
-                            (this.getsCounts().get('G')+this.getsCounts().get('C'))*4);
+                    (this.getsCounts().get('A')+this.getsCounts().get('T'))*2+
+                            ((this.getsCounts().get('G')+this.getsCounts().get('C'))*4);
         }else {
             var = 64.9 + ((41 * (this.getsCounts().get('G') + this.getsCounts().get('C') - 16.4))
                     / (this.getsCounts().get('A') + this.getsCounts().get('T') + this.getsCounts().get('G') + this.getsCounts().get('C')));
@@ -76,4 +76,18 @@ class SeqDNA extends FastaRepresentation {
     public void transferToAmino() {
         //TODO
     }
+
+    /**
+     * Eine rekursive Methode zur Berechnung des Isoelektrischen Punktes Objektes
+     * auf das diese Methode angewandt wird.
+     *
+     * @param pH
+     * @return double
+     */
+    @Override
+    public double pI( double pH) {
+        System.out.println("Kann auf diese Sequenz nicht angewendet werden");
+        return 0.0;
+    }
+
 }

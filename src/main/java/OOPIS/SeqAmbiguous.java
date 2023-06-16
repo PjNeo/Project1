@@ -68,4 +68,18 @@ class SeqAmbiguous extends FastaRepresentation  {
     public void transferToAmino() {
 
     }
+
+    /**
+     * Eine rekursive Methode zur Berechnung des Isoelektrischen Punktes Objektes
+     * auf das diese Methode angewandt wird.
+     *
+     * @param pH
+     * @return double
+     */
+    @Override
+    public double pI( double pH) {
+        System.out.println("Kann auf diese Sequenz nicht angewendet werden");
+        return 0.0;
+    }
+
 }

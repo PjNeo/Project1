@@ -62,8 +62,26 @@ public class FastaAdministration {
      *
      */
 
-    public void getInformation(String dateiname, String type) {
-        SeqTypeEn typCheck = SeqTypeEn.valueOf(type);
+    public void getInformation(String dateiname, String type) throws FastaCheckException {
+        SeqTypeEn typCheck = SeqTypeEn.valueOf(type.toUpperCase());
+
+        try {
+            boolean hasFastaFormat = false;
+            Scanner scannercheck = new Scanner(new File(dateiname));
+
+            while (scannercheck.hasNext()) {
+                String line = scannercheck.nextLine();
+                if (line.startsWith(">")) {
+                    hasFastaFormat = true;
+                }
+            }
+            if (hasFastaFormat==false){
+                throw new FastaCheckException();
+            }
+
+            }catch(FileNotFoundException e){
+
+            }
         try {
             int counter = -1;
             String seqSammeln = null;
@@ -82,7 +100,8 @@ public class FastaAdministration {
                     seqSammeln = "";
                     counter++;
                 } else if (line.startsWith(";")) {
-                } else {
+
+                } else  {
 
                     seqSammeln += line;
                     adminlist.get(counter).setSeq(seqSammeln);
@@ -107,7 +126,8 @@ public class FastaAdministration {
 
             scanner.close();
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("Blaaa");
+            e.printStackTrace();
+            throw new RuntimeException("File could not be found");
         }
     }
 

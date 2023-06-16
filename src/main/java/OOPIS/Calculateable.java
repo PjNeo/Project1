@@ -45,4 +45,12 @@ public interface Calculateable {
     public void transferToAmino();
 
 
+    /**
+     *
+     * @return double
+     */
+    public double pI(double pH );
+
+
+
 }

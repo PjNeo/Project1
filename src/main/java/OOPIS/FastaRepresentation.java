@@ -123,5 +123,7 @@ abstract class FastaRepresentation implements Calculateable {
         this.length=length;
     }
 
+    public double pI( double pH) {return 0.0;}
+
 
 }
