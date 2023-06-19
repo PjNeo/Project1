@@ -13,8 +13,8 @@ public class Main {
         //          if (element instanceof SeqPeptide){
 //                System.out.println(((SeqPeptide) element).pI(7.0));
         //           }
-    }
-}
+ //   }
+//}
 //        n.getInformation("/Users/philipnewman/IdeaProjects/Project1/src/OOPIS/sample.fasta", "Dna");
 //        System.out.println(n.adminlist.get(0).gcContent());
 //        System.out.println(n.adminlist.get(0).molecularWeight());
@@ -29,5 +29,5 @@ public class Main {
 
 
 
-//    }
-//}
+   }
+}

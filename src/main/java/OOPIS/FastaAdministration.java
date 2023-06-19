@@ -86,7 +86,7 @@ public class FastaAdministration {
             }
         try {
             int counter = -1;
-            String seqSammeln = null;
+            String seqSammeln="";
             Scanner scanner = new Scanner(new File(dateiname));
             SeqFactory factory = new SeqFactory();
 
@@ -103,10 +103,11 @@ public class FastaAdministration {
                     counter++;
                 } else if (line.startsWith(";")) {
 
-                } else {
+                } else  {
 
                     seqSammeln += line;
                     adminlist.get(counter).setSeq(seqSammeln);
+
 
                     switch (typCheck) {
                         case DNA -> {
@@ -131,7 +132,9 @@ public class FastaAdministration {
                             }
                         }
                     }
+
                 }
+            }
                     for (FastaRepresentation object : adminlist) {
                         object.setLength(object.getSeq().length());
                         object.fillsCounts();
@@ -147,7 +150,7 @@ public class FastaAdministration {
                         object.getPeptideMap().put("C-Term", 2.34);
                     }
 
-                }
+
             scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
