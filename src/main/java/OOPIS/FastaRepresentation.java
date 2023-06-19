@@ -14,7 +14,7 @@ import java.util.Map;
  * das alle Informationen zur weiterverarbeitung beinhaltet. Diese Klasse soll die einzige sein von der Objekte
  * erschaffen werden können. Welche Subklasse angesprochen wird wird in SeqFaktory durch if abfragen geregelt.
 */
-abstract class FastaRepresentation implements Calculateable {
+abstract class FastaRepresentation  {
 
     /**
      * Attribute die für die Spezifizierung eines fasta Eintrages wichtig sind.
@@ -123,7 +123,15 @@ abstract class FastaRepresentation implements Calculateable {
         this.length=length;
     }
 
-    public double pI( double pH) {return 0.0;}
+
+    public double pI(double pH) {return 0.0;}
 
 
+    public abstract double meltingPointCal();
+
+    public abstract double molecularWeight();
+
+    public abstract double gcContent();
+
+    public abstract double netCharge(double pH);
 }

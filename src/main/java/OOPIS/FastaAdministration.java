@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * Hier werden Objekte erstellt und mit den ausgelesenen Daten befüllt und abschließend abgespeichert.
@@ -75,12 +76,13 @@ public class FastaAdministration {
                     hasFastaFormat = true;
                 }
             }
-            if (hasFastaFormat==false){
+            if (!hasFastaFormat){
                 throw new FastaCheckException();
             }
 
             }catch(FileNotFoundException e){
-
+            e.printStackTrace();
+            throw new RuntimeException("File has no Fasta format");
             }
         try {
             int counter = -1;
@@ -101,29 +103,51 @@ public class FastaAdministration {
                     counter++;
                 } else if (line.startsWith(";")) {
 
-                } else  {
+                } else {
 
                     seqSammeln += line;
                     adminlist.get(counter).setSeq(seqSammeln);
 
+                    switch (typCheck) {
+                        case DNA -> {
+                            if (!Pattern.matches("[ATGC]+", seqSammeln)) {
+                                throw new WrongtypeException("Sequence is no DNA Sequence");
+                            }
+                        }
+                        case RNA -> {
+                            if (!Pattern.matches("[AUGC]+", seqSammeln)) {
+                                throw new WrongtypeException("Sequence is no RNA Sequence");
+                            }
+                        }
+                        case PEPTIDE -> {
+
+                            if (!Pattern.matches("[ACDEFGHIKLMNPQRSTVWY]+", seqSammeln) || seqSammeln.chars().distinct().count() <= 4) {
+                                throw new WrongtypeException("Sequence is no Peptide Sequence");
+                            }
+                        }
+                        case AMBIGUOUS -> {
+                            if (!Pattern.matches("[ACDEFGHIKLMNPQRSTVWYU]+", seqSammeln)) {
+                                throw new WrongtypeException("Sequence does not fit any wanted Sequences");
+                            }
+                        }
+                    }
                 }
-            }
-            for (FastaRepresentation object : adminlist) {
-                object.setLength(object.getSeq().length());
-                object.fillsCounts();
+                    for (FastaRepresentation object : adminlist) {
+                        object.setLength(object.getSeq().length());
+                        object.fillsCounts();
 
-                object.getPeptideMap().put("C", 8.33);
-                object.getPeptideMap().put("D", 3.86);
-                object.getPeptideMap().put("E", 4.25);
-                object.getPeptideMap().put("H", 6.0);
-                object.getPeptideMap().put("K", 10.53);
-                object.getPeptideMap().put("R", 12.48);
-                object.getPeptideMap().put("Y", 10.07);
-                object.getPeptideMap().put("N-Term", 9.69);
-                object.getPeptideMap().put("C-Term", 2.34);
-            }
+                        object.getPeptideMap().put("C", 8.33);
+                        object.getPeptideMap().put("D", 3.86);
+                        object.getPeptideMap().put("E", 4.25);
+                        object.getPeptideMap().put("H", 6.0);
+                        object.getPeptideMap().put("K", 10.53);
+                        object.getPeptideMap().put("R", 12.48);
+                        object.getPeptideMap().put("Y", 10.07);
+                        object.getPeptideMap().put("N-Term", 9.69);
+                        object.getPeptideMap().put("C-Term", 2.34);
+                    }
 
-
+                }
             scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

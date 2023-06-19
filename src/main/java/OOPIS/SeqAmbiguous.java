@@ -14,21 +14,16 @@ package OOPIS;
  * geschrieben.+
 */
 class SeqAmbiguous extends FastaRepresentation  {
-    /**
-     * Methode zur Schmelzpunkbestimmung
-     * @return double
-     */
     @Override
     public double meltingPointCal() {
-
-        return 0.0;
+        return 0;
     }
+
     /**
      * Methode zur Molekulargewichtsbestimmung
      *
      * @return double
      */
-    @Override
     public double molecularWeight() {
 
         double var =this.getsCounts().get('A')*313.21 +this.getsCounts().get('C')*289.18
@@ -51,35 +46,17 @@ class SeqAmbiguous extends FastaRepresentation  {
                 + this.getsCounts().get('T'));
         return var*100;
     }
-    /**
-     * Methode zur Nettoladungsberechnuung
-     * @param pH
-     * @return double
-     */
+
     @Override
     public double netCharge(double pH) {
-        System.out.println("Kann nicht auf diese Sequenz angewendet werden");
-        return 0.0;
+        return 0;
     }
+
     /**
      * Methode zur Umwandlung in Amino
      */
-    @Override
     public void transferToAmino() {
 
-    }
-
-    /**
-     * Eine rekursive Methode zur Berechnung des Isoelektrischen Punktes Objektes
-     * auf das diese Methode angewandt wird.
-     *
-     * @param pH
-     * @return double
-     */
-    @Override
-    public double pI( double pH) {
-        System.out.println("Kann auf diese Sequenz nicht angewendet werden");
-        return 0.0;
     }
 
 }

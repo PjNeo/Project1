@@ -22,7 +22,7 @@ public class SeqFactory {
 
             switch (type) {
                 case DNA -> {
-
+                    
                     return new SeqDNA();
                 }
                 case RNA -> {

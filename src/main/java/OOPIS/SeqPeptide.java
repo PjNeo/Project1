@@ -28,26 +28,13 @@ class SeqPeptide extends FastaRepresentation {
 
     }
 
-
-    /**
-     * Methode zur Schmelzpunktbestimmung für das Objekt auf das die Methode angewandt
-     * wird.
-     *
-     * @return double
-     */
-    @Override
-    public double meltingPointCal() {
-        System.out.println("Kann nicht auf diese Sequenz angewendet werden");
-        return 0.0;
-    }
-
     /**
      * Methode zur Molekulargewichtsbestimmung des Objects auf das die Methode
      * ausgeführt wird.
      *
      * @return double
      */
-    @Override
+
     public double molecularWeight() {
 
         double sum =
@@ -61,17 +48,6 @@ class SeqPeptide extends FastaRepresentation {
 
 
         return sum + this.getPeptideMap().get("C-Term") + this.getPeptideMap().get("N-Term");
-    }
-
-    /**
-     * Methode zur GCanteilsbestimmung
-     *
-     * @return double
-     */
-    @Override
-    public double gcContent() {
-        System.out.println("Kann nicht auf diese Sequenz angewendet werden");
-        return 0.0;
     }
 
     /**
@@ -128,6 +104,11 @@ class SeqPeptide extends FastaRepresentation {
         return sumNTerminus.get() - sumCTerminus.get();
     }
 
+    @Override
+    public double gcContent() {
+        return 0;
+    }
+
     /**
      * Eine rekursive Methode zur Berechnung des Isoelektrischen Punktes Objektes
      * auf das diese Methode angewandt wird.
@@ -137,16 +118,23 @@ class SeqPeptide extends FastaRepresentation {
      */
     @Override
     public double pI( double pH) {
+        double result;
         if (isApproximatelyZero(this.netCharge(pH))) {
-            return pH;
+            result = pH;
+        } else if (this.netCharge(pH) < 0) {
+            result = pI(pH - pH / 2);
+        } else {
+            result = pI(pH + pH / 2);
         }
 
-        if (this.netCharge(pH) < 0) {
-            return pI(pH - pH / 2);
-        } else {
-            return pI(pH + pH / 2);
-        }
+        return result;
     }
+
+    @Override
+    public double meltingPointCal() {
+        return 0;
+    }
+
     /**
      *Hier wird sichergestellt, dass der Wert sich nur um den pH Wert von 0 bewegt in einem Abstand von 0.01
      * @param value
@@ -156,11 +144,4 @@ class SeqPeptide extends FastaRepresentation {
         return Math.abs(value) <= 0.01;
     }
 
-    /**
-     * Methode zur Umwandlung in Amino
-     */
-    @Override
-    public void transferToAmino() {
-
-    }
 }

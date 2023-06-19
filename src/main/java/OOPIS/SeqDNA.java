@@ -59,35 +59,20 @@ class SeqDNA extends FastaRepresentation {
         return var*100;
     }
 
-    /**
-     * Methode zur Nettoladungsberechnuung
-     *
-     * @return double
-     */
     @Override
     public double netCharge(double pH) {
-        System.out.println("Kann auf diese Sequenz nicht angewendet werden");
         return 0;
     }
+
     /**
      * Methode zur Umwandlung in Amino
      */
-    @Override
+
     public void transferToAmino() {
         //TODO
     }
 
-    /**
-     * Eine rekursive Methode zur Berechnung des Isoelektrischen Punktes Objektes
-     * auf das diese Methode angewandt wird.
-     *
-     * @param pH
-     * @return double
-     */
-    @Override
-    public double pI( double pH) {
-        System.out.println("Kann auf diese Sequenz nicht angewendet werden");
-        return 0.0;
-    }
+
+
 
 }
