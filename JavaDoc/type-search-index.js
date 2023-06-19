@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"OOPIS","l":"Calculateable"},{"p":"OOPIS","l":"FastaAdministration"},{"p":"<Unnamed>","l":"Main"},{"p":"OOPIS","l":"Main"},{"p":"OOPIS","l":"SeqFactory"},{"p":"OOPIS","l":"SeqTypeEn"}];updateSearchResults();
